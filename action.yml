@@ -5,7 +5,7 @@ inputs:
   milliseconds: # change this
     required: true
     description: 'input description here'
-    default: '1000'
+    default: 1000
 runs:
   using: 'node12'
   main: 'build/index.js'
