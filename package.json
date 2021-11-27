@@ -11,7 +11,7 @@
     "eslint:fix": "eslint . --ext .ts --fix",
     "lint": "npm run eslint",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "package": "ncc build --out build --source-map --license licenses.txt",
+    "package": "ncc build --source-map --license licenses.txt",
     "prettier:fix": "npx prettier --write src/"
   },
   "repository": {
