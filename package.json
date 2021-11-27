@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/main.js",
   "scripts": {
-    "all": "npm run lint:fix && npm run build && npm run package && node build/index.js",
+    "all": "npm run lint:fix && npm run build && npm run package",
     "build": "tsc",
     "dev": "npx ts-node src/converter.ts",
     "eslint": "eslint . --ext .ts",
