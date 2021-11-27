@@ -5,8 +5,7 @@
 **/node_modules
 
 ## production
-/build
-/dist
+# /build
 
 ## misc
 .DS_Store
