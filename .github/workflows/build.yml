@@ -13,9 +13,8 @@ jobs:
       - run: |
           npm run build
       - run: |
-          git add -A .
           git config user.name "wild.lycaon"
           git config user.email "wild.lycaon@gmail.com"
+          git add -A
           git commit -m "action result"
-          git pull
-          git push origin main
+          git push -f origin main
