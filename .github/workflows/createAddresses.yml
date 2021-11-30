@@ -1,8 +1,5 @@
-name: 'build'
-on: [
-  workflow_dispatch
-]
-
+name: 'createAddresses'
+on: [workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
