@@ -1,4 +1,4 @@
-name: 'build-createAddresses'
+name: 'build'
 on: [
   workflow_dispatch
 ]
