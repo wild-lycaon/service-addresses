@@ -14,12 +14,9 @@ jobs:
           npm run build
       - run: |
           git add -N .
-          if ! git diff --exit-code --quiet
-          then
-            git config user.name "wild.lycaon"
-            git config user.email "wild.lycaon@gmail.com"
-            git add .
-            git commit -m "action result"
-            git pull
-            git push origin master
-          fi
+          git config user.name "wild.lycaon"
+          git config user.email "wild.lycaon@gmail.com"
+          git add .
+          git commit -m "action result"
+          git pull
+          git push origin master
