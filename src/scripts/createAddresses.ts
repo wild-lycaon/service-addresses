@@ -101,14 +101,13 @@ const _getJson = async (param: any): Promise<any> => {
 const _putJson = async (param: any): Promise<any> => {
   const { fromAddress, fromZip, path } = param
   const writer = async (path: string, file: string, data: any) => {
-    const fileName = `${path}/${file}.json`
     fs.mkdirSync(path, { recursive: true })
     zlib.gzip(JSON.stringify(data), (_err, binary) => {
-      const fname = `${fileName}.gz`
-      if (fs.existsSync(fname)) {
-        fs.unlinkSync(fname)
+      const fileName = `${path}/${file}.json`
+      if (fs.existsSync(fileName)) {
+        fs.unlinkSync(fileName)
       }
-      fs.writeFileSync(fname, binary)
+      fs.writeFileSync(fileName, binary)
     })
   }
 
