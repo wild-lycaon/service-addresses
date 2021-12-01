@@ -7,7 +7,7 @@ import fs from 'fs'
 import iconv from 'iconv-lite'
 import readline from 'readline'
 import request from 'request'
-const { unzip, zip } = require('zip-unzip-promise')
+import zlib from 'zlib'
 
 const _zip = 'ken_all.zip'
 const _url = `https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/${_zip}`
@@ -32,6 +32,7 @@ request({ encoding: null, url: _url }, async (error, response, body) => {
  */
 const _getCsv = async (param: any): Promise<any> => {
   const { body, zip } = param
+  const unzip = require('zip-unzip-promise').unzip
 
   // 一時ディレクトリの作成
   const path = fs.mkdtempSync('./temp.')
@@ -102,14 +103,13 @@ const _putJson = async (param: any): Promise<any> => {
   const writer = async (path: string, file: string, data: any) => {
     const fileName = `${path}/${file}.json`
     fs.mkdirSync(path, { recursive: true })
-    if (fs.existsSync(fileName)) {
-      fs.unlinkSync(fileName)
-    }
-    fs.writeFileSync(fileName, JSON.stringify(data))
-    await zip(fileName, fileName.replace('.json', '.zip'), {
-      overwrite: true
+    zlib.gzip(JSON.stringify(data), (_err, binary) => {
+      const fname = `${fileName}.gz`
+      if (fs.existsSync(fname)) {
+        fs.unlinkSync(fname)
+      }
+      fs.writeFileSync(fname, binary)
     })
-    fs.unlinkSync(fileName)
   }
 
   // 以前に作成したファイルを削除
