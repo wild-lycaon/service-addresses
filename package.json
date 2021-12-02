@@ -1,5 +1,5 @@
 {
-  "name": "poc-addresses",
+  "name": "service-addresses",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -41,7 +41,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "iconv-lite": "^0.6.3",
     "prettier": "^2.0.5",
-    "readline-sync": "^1.4.10",
     "request": "^2.88.2",
     "typescript": "^3.8.3",
     "zip-unzip-promise": "^2.1.1"
