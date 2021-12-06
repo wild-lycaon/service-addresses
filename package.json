@@ -9,18 +9,20 @@
     "eslint:fix": "eslint . --ext .ts --fix",
     "lint": "npm run eslint",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "prettier:fix": "npx prettier --write src/"
+    "prettier:fix": "npx prettier --write src/",
+    "server": "npx http-server ./docs -g",
+    "test": "tsc --esModuleInterop --outDir build src/test.ts && node build/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wild-lycaon/poc-addresses.git"
+    "url": "git+https://github.com/wild-lycaon/service-addresses.git"
   },
   "author": "wild.lycaon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wild-lycaon/poc-addresses/issues"
+    "url": "https://github.com/wild-lycaon/service-addresses/issues"
   },
-  "homepage": "https://github.com/wild-lycaon/poc-addresses#readme",
+  "homepage": "https://github.com/wild-lycaon/service-addresses#readme",
   "dependencies": {
     "@actions/core": "^1.6.0"
   },
@@ -39,6 +41,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "http-server": "^14.0.0",
     "iconv-lite": "^0.6.3",
     "prettier": "^2.0.5",
     "request": "^2.88.2",

@@ -8,7 +8,6 @@ import iconv from 'iconv-lite'
 import readline from 'readline'
 import request from 'request'
 import zlib from 'zlib'
-const { unzip, zip } = require('zip-unzip-promise')
 
 const _zip = 'ken_all.zip'
 const _url = `https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/${_zip}`
@@ -32,6 +31,7 @@ request({ encoding: null, url: _url }, async (error, response, body) => {
  * @return  Promise<any>
  */
 const _getCsv = async (param: any): Promise<any> => {
+  const { unzip } = require('zip-unzip-promise')
   const { body, zip } = param
 
   // 一時ディレクトリの作成
@@ -99,23 +99,14 @@ const _getJson = async (param: any): Promise<any> => {
  * @return  Promise<void>
  */
 const _putJson = async (param: any): Promise<void> => {
+  const { BROTLI_PARAM_QUALITY, BROTLI_MAX_QUALITY } = zlib.constants
   const { fromAddress, fromZip, path } = param
   const writer = async (path: string, file: string, data: any) => {
-    const fileName = `${path}/${file}`
-    // ディレクトリ作成
     fs.mkdirSync(path, { recursive: true })
-    // 一時ファイル作成（＆データ圧縮）
-    const { BROTLI_PARAM_QUALITY, BROTLI_MAX_QUALITY } = zlib.constants
     const compressed = await zlib.brotliCompressSync(JSON.stringify(data), {
       params: { [BROTLI_PARAM_QUALITY]: BROTLI_MAX_QUALITY }
     })
-    fs.writeFileSync(fileName, compressed)
-    // 圧縮ファイル作成
-    await zip(fileName, `${fileName}.zip`, {
-      overwrite: true
-    })
-    // 一時ファイル削除
-    fs.unlinkSync(fileName)
+    fs.writeFileSync(`${path}/${file}.json.br`, compressed)
   }
 
   // 以前に作成したファイルを削除
