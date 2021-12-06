@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create:addr": "tsc --esModuleInterop --outDir build src/scripts/createAddresses.ts && node build/createAddresses.js",
+    "create:addr": "npx ts-node src/scripts/CreateAddresses.ts",
     "eslint": "eslint . --ext .ts",
     "eslint:fix": "eslint . --ext .ts --fix",
     "lint": "npm run eslint",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
     "prettier:fix": "npx prettier --write src/",
     "server": "npx http-server ./docs -g",
-    "test": "tsc --esModuleInterop --outDir build src/test.ts && node build/test.js"
+    "test": "npx ts-node src/Test.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "iconv-lite": "^0.6.3",
     "prettier": "^2.0.5",
     "request": "^2.88.2",
+    "ts-node": "^10.4.0",
     "typescript": "^3.8.3",
     "zip-unzip-promise": "^2.1.1"
   }

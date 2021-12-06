@@ -1,5 +1,5 @@
 /**
- * AddressesCreator Script
+ * CreateAddresses Script
  * @see https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html
  * @see https://www.post.japanpost.jp/zipcode/dl/readme.html
  */
