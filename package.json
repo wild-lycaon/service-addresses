@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/wild-lycaon/service-addresses#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "dotenv": "^10.0.0"
   },
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
